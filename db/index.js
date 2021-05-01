@@ -27,7 +27,7 @@ class DB {
   }
 
   // Remove an employee with the given id
-  removeEmployee(employeeId) {
+  removeEmployees(employeeId) {
     return this.connection.query(
       "DELETE FROM employee WHERE id = ?",
       employeeId
@@ -35,7 +35,7 @@ class DB {
   }
 
   // Update the given employee's role
-  updateEmployeeRole(employeeId, roleId) {
+  updateEmployeesRole(employeeId, roleId) {
     return this.connection.query(
       "UPDATE employee SET role_id = ? WHERE id = ?",
       [roleId, employeeId]
@@ -43,7 +43,7 @@ class DB {
   }
 
   // Update the given employee's manager
-  updateEmployeeManager(employeeId, managerId) {
+  updateEmployeesManager(employeeId, managerId) {
     return this.connection.query(
       "UPDATE employee SET manager_id = ? WHERE id = ?",
       [managerId, employeeId]
