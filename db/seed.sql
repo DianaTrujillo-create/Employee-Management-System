@@ -1,4 +1,4 @@
-use employees; 
+USE employees; 
 
 INSERT INTO department
     (name)
@@ -15,7 +15,7 @@ VALUES
     ('HR Manager', 90000, 3),
     ('Talent Scout', 70000, 3),
     ('Senior Software Associate', 125000, 4),
-    ('Software Associate Engineer', 85000, 4),
+    ('Software Associate Engineer', 85000, 4);
 
 INSERT INTO employee
     (first_name, last_name, role_id, manager_id)
