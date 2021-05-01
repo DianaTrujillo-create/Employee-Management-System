@@ -1,6 +1,5 @@
 const mysql = require("mysql");
 const util = require("util");
-const table = require("console.table");
 
 const connection = mysql.createConnection({
     host: "localhost",
@@ -10,10 +9,7 @@ const connection = mysql.createConnection({
     database: "employees",
 });
 
-connection.connect(function(err){
-    if (err) throw err;
-    loadMainPrompts();
-});
+connection.connect();
 
 connection.query = util.promisify(connection.query);
 

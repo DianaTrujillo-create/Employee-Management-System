@@ -1,6 +1,9 @@
+const mysql = require("mysql");
 const logo = require("asciiart-logo");
-const { prompt } = require("inquirer");
 const db = require("./db");
+const table = require("console.table");
+const { prompt } = require("inquirer");
+
 
 init();
 
@@ -9,6 +12,7 @@ function init() {
   const logoText = logo({ name: "Employee Management" }).render();
 
   console.log(logoText);
+  loadMainPrompts(); 
 }
 
 
@@ -75,7 +79,7 @@ async function loadMainPrompts() {
           value: "QUIT"
         }
       ]
-    }).then(function(selection) {
+    }); 
       switch (choice) {
         case "VIEW_EMPLOYEES":
         return viewEmployees();
@@ -106,8 +110,7 @@ async function loadMainPrompts() {
         default:
         return quit();
       }
-    });
-}
+    }
 
 
 async function viewEmployees() {
