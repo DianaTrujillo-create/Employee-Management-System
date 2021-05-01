@@ -1,9 +1,21 @@
 const mysql = require("mysql");
-const logo = require("asciiart-logo");
-const db = require("./db");
+const util = require("util");
 const table = require("console.table");
 const { prompt } = require("inquirer");
+const db = require("./db");
+const logo = require("asciiart-logo");
 
+const connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: "root",
+    password: "Pepper0806!",
+    database: "employees",
+});
+
+connection.connect();
+
+connection.query = util.promisify(connection.query);
 
 init();
 

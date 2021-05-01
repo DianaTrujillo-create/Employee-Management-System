@@ -2,12 +2,12 @@ DROP DATABASE IF EXISTS employees;
 CREATE DATABASE employees;
 USE employees; 
 
-Create Table department (
+CREATE TABLE department (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     name VARCHAR(50) UNIQUE NOT NULL
 );
 
-Create Table department (
+CREATE TABLE department (
     id INT AUTO_INCREMENT PRIMARY KEY, 
     title VARCHAR(50) UNIQUE NOT NULL, 
     salary DECIMAL NOT NULL, 
