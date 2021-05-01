@@ -11,10 +11,10 @@
   "dependencies": {
     "asciiart-logo": "^0.2.6",
     "console.table": "^0.10.0",
+    "dotenv": "^8.2.0",
     "inquirer": "^7.3.3",
     "mysql": "^2.18.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DianaTrujillo-create/Employee-Management-System.git"

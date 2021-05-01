@@ -1,21 +1,7 @@
-const mysql = require("mysql");
-const util = require("util");
-const table = require("console.table");
 const { prompt } = require("inquirer");
 const db = require("./db");
 const logo = require("asciiart-logo");
-
-const connection = mysql.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "Pepper0806!",
-    database: "employees",
-});
-
-connection.connect();
-
-connection.query = util.promisify(connection.query);
+const ctable = require("console.table");
 
 init();
 
@@ -24,8 +10,8 @@ function init() {
   const logoText = logo({ name: "Employee Management" }).render();
 
   console.log(logoText);
-  loadMainPrompts(); 
-}
+  loadMainPrompts();
+};
 
 
 async function loadMainPrompts() {
