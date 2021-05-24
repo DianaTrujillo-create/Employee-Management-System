@@ -35,7 +35,7 @@ class DB {
   }
 
   // Update the given employee's role
-  updateEmployeesRole(employeeId, roleId) {
+  updateRole(employeeId, roleId) {
     return this.connection.query(
       "UPDATE employee SET role_id = ? WHERE id = ?",
       [roleId, employeeId]
@@ -70,7 +70,7 @@ class DB {
   // Find all departments, join with employees and roles and sum up utilized department budget
   findAllDepartments() {
     return this.connection.query(
-      "SELECT department.id, department.name, SUM(role.salary) AS utilized_budget FROM department LEFT JOIN role ON role.department_id = department.id LEFT JOIN employee ON employee.role_id = role.id GROUP BY department.id, department.name"
+      "SELECT department.id, department.name, SUM(role.salary) AS utilized_budget FROM department LEFT JOIN role ON role.department_id = department.id LEFT JOIN employee ON employee_role_id = role.id GROUP BY department.id, department.name"
     );
   }
 
@@ -90,7 +90,7 @@ class DB {
   // Find all employees in a given department, join with roles to display role titles
   findAllEmployeesByDepartment(departmentId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee.role_id = role.id LEFT JOIN department department on role.department_id = department.id WHERE department.id = ?;",
+      "SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role on employee_role_id = role.id LEFT JOIN department department on role.department_id = department.id WHERE department.id = ?;",
       departmentId
     );
   }
@@ -98,7 +98,7 @@ class DB {
   // Find all employees by manager, join with departments and roles to display titles and department names
   findAllEmployeesByManager(managerId) {
     return this.connection.query(
-      "SELECT employee.id, employee.first_name, employee.last_name, department.name AS department, role.title FROM employee LEFT JOIN role on role.id = employee.role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
+      "SELECT employee.id, employee.first_name, employee.last_name, department.name AS department, role.title FROM employee LEFT JOIN role on role.id = employee_role_id LEFT JOIN department ON department.id = role.department_id WHERE manager_id = ?;",
       managerId
     );
   }

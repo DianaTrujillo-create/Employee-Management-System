@@ -1,7 +1,7 @@
 const { prompt } = require("inquirer");
 const db = require("./db");
 const logo = require("asciiart-logo");
-const ctable = require("console.table");
+require("console.table");
 
 init();
 
@@ -11,7 +11,7 @@ function init() {
 
   console.log(logoText);
   loadMainPrompts();
-};
+}
 
 
 async function loadMainPrompts() {
@@ -201,7 +201,7 @@ async function removeEmployee() {
   loadMainPrompts();
 }
 
-async function updateEmployeeRole() {
+async function updateRole() {
   const employees = await db.findAllEmployees();
 
   const employeeChoices = employees.map(({ id, first_name, last_name }) => ({
@@ -422,7 +422,7 @@ async function addEmployee() {
     choices: roleChoices
   });
 
-  employee.role_id = roleId;
+  role_id = roleId;
 
   const managerChoices = employees.map(({ id, first_name, last_name }) => ({
     name: `${first_name} ${last_name}`,
